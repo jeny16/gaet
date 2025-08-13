@@ -4,303 +4,38 @@
   <meta charset="UTF-8">
   <title>Investopia - GAET International School, Aldeia</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Playfair+Display:700&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      min-height: 100vh;
-      background: url('./public/bg-image.png') center center/cover no-repeat;
-      color: #fff;
-      font-family: 'Montserrat', Arial, sans-serif;
-      position: relative;
-  /* border removed */
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-    /* Paper plane background shapes */
-    .bg-left {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      background: url('./public/bg-design-1.png') left center/cover no-repeat;
-      opacity: 0.22;
-    }
-    .bg-right {
-      position: fixed;
-      bottom: 0; right: 0; width: 100vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      background: url('./public/bg-design-2.png') right bottom/cover no-repeat;
-      opacity: 0.22;
-    }
-    /* Header */
-    .header {
-          .bg-left {
-            position: fixed;
-            top: 0; left: 0; width: 50vw; height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            background: url('./public/bg-design-1.png') left center/contain no-repeat;
-            opacity: 0.22;
-          }
-          .bg-right {
-            position: fixed;
-            top: 0; right: 0; width: 50vw; height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            background: url('./public/bg-design-2.png') right center/contain no-repeat;
-            opacity: 0.22;
-          }
-      padding: 40px 60px 0 40px;
-      position: relative;
-      z-index: 2;
-    }
-    .logo-block {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .logo-img {
-      width: 60px;
-      margin-bottom: 10px;
-    }
-    .logo-text {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      line-height: 1.1;
-      margin-bottom: 2px;
-    }
-    .logo-sub {
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      opacity: 0.8;
-    }
-    .contact-btn {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 2px 10px;
-      gap: 10px;
-      position: absolute;
-      width: 184px;
-      height: 37px;
-      left: 1667px;
-      top: 94px;
-      background: #A3A582;
-      color: #F4EEE4;
-      border: none;
-      border-radius: 2px;
-      font-size: 18px;
-      font-family: 'General Sans', Arial, sans-serif;
-      font-weight: 400;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      box-shadow: none;
-      opacity: 1;
-      transition: background 0.2s;
-    }
-    .contact-btn:hover {
-      background: #e94c1a;
-      color: #fff;
-    }
-    /* Main content */
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 70vh;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-    .subtitle {
-      /* INTRODUCING THE FIRST EDITION OF */
-
-position: absolute;
-width: 447px;
-height: 18px;
-left: 777px;
-top: 179.27px;
-
-font-family: 'General Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 25.66px;
-line-height: 35px;
-
-display: flex;
-align-items: center;
-
-color: #FFFFFF;
-
-
-    }
-    .investopia-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 10px;
-    }
-    .investopia-title {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      color: #fff;
-      font-family: 'Montserrat', Arial, sans-serif;
-      margin-right: 30px;
-      display: flex;
-      align-items: center;
-    }
-    .investopia-title .o {
-      display: inline-block;
-      width: 1.1em;
-      height: 1.1em;
-      border-radius: 50%;
-      background: #fff;
-      color: #184848;
-      position: relative;
-      margin: 0 2px;
-      font-weight: 700;
-      text-align: center;
-      vertical-align: middle;
-    }
-    .investopia-title .o svg {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 0.7em; height: 0.7em;
-      fill: #184848;
-    }
-    .gaet-block {
-      border-left: 2px solid #fff;
-      padding-left: 18px;
-      text-align: left;
-      font-size: 1.1rem;
-      line-height: 1.2;
-      font-family: 'Montserrat', Arial, sans-serif;
-      margin-left: 10px;
-    }
-    .gaet-block .gaet-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      margin-bottom: 2px;
-    }
-    .gaet-block .gaet-sub {
-      font-size: 1rem;
-      font-weight: 400;
-      opacity: 0.8;
-      letter-spacing: 0.07em;
-    }
-    .investopia-desc {
-      font-size: 0.95rem;
-      letter-spacing: 0.18em;
-      margin-bottom: 30px;
-      margin-top: 0;
-      opacity: 0.8;
-    }
-    .main-heading {
-     position: absolute;
-  width: 726px;
-  height: 78px;
-  left: 608px;
-  top: 571px;
-  font-family: 'Esperanza Headline', serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 41.17px;
-  line-height: 58px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-      color: #fff;
-     
-    }
-    .register-btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 27px 38px;
-  gap: 10px;
-
-  position: absolute;
-  width: 271px;
-  height: 72px;
-  left: calc(50% - 271px/2 - 0.4px);
-  top: 762px;
-
-  background: #F3EEE4;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000;
-  border-radius: 6px; /* optional for smoother edges */
-}
-
-    .register-btn:hover {
-      background: #e94c1a;
-      color: #fff;
-    }
-    /* Footer */
-    .footer {
-      position: absolute;
-      bottom: 30px;
-      left: 0; right: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 60px;
-      font-size: 1.05rem;
-      color: #bdb393;
-      opacity: 0.93;
-      z-index: 2;
-      font-family: 'Montserrat', Arial, sans-serif;
-    }
-    @media (max-width: 900px) {
-      .header, .footer { padding-left: 20px; padding-right: 20px; }
-      .main-content { padding: 0 10px; }
-      .investopia-title { font-size: 2.2rem; }
-      .main-heading { font-size: 1.2rem; }
-    }
-    @media (max-width: 600px) {
-      .header, .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .footer { font-size: 0.95rem; }
-      .main-content { min-height: 60vh; }
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div style="position:relative;width:1920px;height:1080px;margin:0 auto;background:#1E484A;overflow:hidden;">
     <div class="bg-left"></div>
     <div class="bg-right"></div>
-  <div class="header" style="position:absolute;top:88px;left:0;right:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding-left:60px;padding-right:40px;z-index:10;">
-      <div class="logo-block" style="display:flex;align-items:center;gap:18px;">
-        <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="logo-img" style="height:90px;width:auto;max-width:220px;" />
+    <div class="header">
+      <div class="logo-block">
+        <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="logo-img" />
       </div>
-  <button class="contact-btn">CONTACT US</button>
+      <button class="contact-btn">CONTACT US</button>
     </div>
-  <div class="subtitle" style="position:absolute;width:480px;height:18px;left:777px;top:179.27px;opacity:1;font-family:'General Sans', Arial, sans-serif;font-style:normal;font-weight:400;font-size:25.66px;line-height:35px;letter-spacing:0%;vertical-align:middle;display:flex;align-items:center;color:#FFFFFF;text-align:center;">INTRODUCING THE FIRST EDITION OF</div>
+    <div class="subtitle">INTRODUCING THE FIRST EDITION OF</div>
     <img src="./public/investopia-logo.png" alt="Investopia Banner" style="position:absolute;top:230px;left:50%;transform:translateX(-50%);width:700px;max-width:100vw;height:auto;display:block;margin:0;" />
-    <div class="main-heading" style="position:absolute;top:571px;left:50%;transform:translateX(-50%);width:726px;height:78px;font-family:'Esperanza Headline', 'Playfair Display', serif;font-weight:400;font-style:normal;font-size:41.17px;line-height:58px;letter-spacing:0%;color:#F3EEE5;text-align:center;vertical-align:middle;display:flex;align-items:center;justify-content:center;">A Celebration of Ideas, Innovation &<br>Young Entrepreneurship</div>
-  <button class="register-btn">Registration open</button>
-    <div class="footer" style="position:absolute;top:951px;left:50%;transform:translateX(-50%);width:1526px;height:25px;display:flex;justify-content:space-between;align-items:center;font-family:'General Sans', Arial, sans-serif;font-weight:400;font-size:30px;line-height:41px;color:#A2A582;">
+    <div class="main-heading">A Celebration of Ideas, Innovation &<br>Young Entrepreneurship</div>
+    <button class="register-btn">Registration open</button>
+    <div class="footer">
+      <a href="#" class="footer-arrow left-footer-arrow" aria-label="Previous">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#A3A582"/>
+          <path d="M19 10L13 16L19 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
       <div style="width:207px;text-align:center;white-space:nowrap;">August 21, 2025</div>
       <div style="width:306px;text-align:center;white-space:nowrap;">From 9.00 am onwards</div>
       <div style="width:467px;text-align:center;white-space:nowrap;">GAET International School, Aldeia</div>
+      <a href="#" class="footer-arrow right-footer-arrow" aria-label="Next">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#A3A582"/>
+          <path d="M13 10L19 16L13 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
     <!-- Slider nav and background vectors would be absolutely positioned here if needed -->
   </div>

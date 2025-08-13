@@ -12,38 +12,45 @@ body {
   box-sizing: border-box;
   overflow: hidden;
 }
+/* Slide 02 background overlays */
 .bg-left {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  height: 100vh;
   z-index: 0;
   pointer-events: none;
-  background: url('./public/bg-design-1.png') left center/cover no-repeat;
-  opacity: 0.22;
+  background: url('./public/bg-design-1.png') left center/contain no-repeat;
+  opacity: 0.32;
 }
 .bg-right {
   position: fixed;
-  bottom: 0; right: 0; width: 100vw; height: 100vh;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
   z-index: 0;
   pointer-events: none;
-  background: url('./public/bg-design-2.png') right bottom/cover no-repeat;
-  opacity: 0.22;
+  background: url('./public/bg-design-2.png') right center/contain no-repeat;
+  opacity: 0.35;
 }
 .header {
   position: absolute;
-  top: 88px;
+  top: 40px;
   left: 0;
   right: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding-left: 60px;
   padding-right: 40px;
   z-index: 10;
 }
 .logo-block {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 18px;
 }
 .logo-img {
@@ -51,34 +58,44 @@ body {
   width: auto;
   max-width: 220px;
 }
-.contact-btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 10px;
-  gap: 10px;
+/* Exact-look contact button (184 × 37) */
+.contact-btn{
+  display: inline-block;
   width: 184px;
   height: 37px;
-  background: #A3A582;
-  color: #F4EEE4;
+
+  /* center text vertically */
+  line-height: 37px;
+  text-align: center;
+
+  /* colors */
+  background: #A3A582;       /* olive panel */
+  color: #F4EEE4;            /* soft ivory text */
+
+  /* typography — thin, very spaced uppercase like the image */
+  font-family: "General Sans", "Montserrat", Arial, sans-serif;
+  font-weight: 300;         /* thin weight for that delicate look */
+  font-size: 16px;          /* matches optical size in image */
+  letter-spacing: 3px;      /* wide tracking to match the image */
+  text-transform: uppercase;
+
+  /* box */
   border: none;
   border-radius: 2px;
-  font-size: 18px;
-  font-family: 'General Sans', Arial, sans-serif;
-  font-weight: 400;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
   box-shadow: none;
-  opacity: 1;
-  transition: background 0.2s;
-  align-self: flex-start;
+  padding: 0;               /* width/height are fixed; no extra vertical padding */
+  cursor: pointer;
+
+  /* slight transition for hover */
+  transition: background .18s ease, color .18s ease;
 }
-.contact-btn:hover {
-  background: #e94c1a;
+
+/* subtle hover (optional) — keep it soft */
+.contact-btn:hover{
+  background: #8f9570;
   color: #fff;
 }
+
 .subtitle {
   position: absolute;
   width: 480px;
@@ -157,6 +174,53 @@ body {
   font-size: 30px;
   line-height: 41px;
   color: #A2A582;
+}
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.15s;
+}
+.left-arrow {
+  left: 420px;
+}
+.right-arrow {
+  right: 420px;
+}
+.slider-arrow svg circle {
+  transition: fill 0.2s;
+}
+.slider-arrow:hover svg circle {
+  fill: #A3A582;
+}
+.footer-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.footer-arrow svg circle {
+  transition: fill 0.2s;
+}
+.footer-arrow:hover svg circle {
+  fill: #1E484A;
+}
+.left-footer-arrow {
+  margin-left: 0;
+}
+.right-footer-arrow {
+  margin-right: 0;
 }
 @media (max-width: 900px) {
   .header, .footer { padding-left: 20px; padding-right: 20px; }

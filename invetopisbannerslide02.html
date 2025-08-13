@@ -1,113 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Investopia Banner Slide 02</title>
+
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Playfair+Display:700&display=swap" rel="stylesheet">
+
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    /* reset / base */
+    html, body { height: 100%; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
+
     body {
       min-height: 100vh;
       background: url('./public/bg-image.png') center center/cover no-repeat;
       color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
       position: relative;
-      box-sizing: border-box;
       overflow: hidden;
     }
-    .bg-left {
-      position: fixed;
-      top: 0; left: 0; width: 50vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      background: url('./public/bg-design-1.png') left center/contain no-repeat;
-      opacity: 0.22;
+
+    /* decorative overlays (unchanged) */
+    .bg-left, .bg-right {
+      position: fixed; top: 0; bottom: 0; width: 50vw; z-index: 0; pointer-events: none;
+      background-repeat: no-repeat; background-size: contain; opacity: 0.22;
     }
-    .bg-right {
-      position: fixed;
-      top: 0; right: 0; width: 50vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      background: url('./public/bg-design-2.png') right center/contain no-repeat;
-      opacity: 0.22;
-    }
+    .bg-left { left: 0; background-image: url('./public/bg-design-1.png'); background-position: left center; }
+    .bg-right { right: 0; background-image: url('./public/bg-design-2.png'); background-position: right center; }
+
+    /* header */
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 40px 60px 0 60px;
       position: absolute;
       top: 0; left: 0; right: 0;
+      padding: 40px 60px;
       z-index: 10;
-    }
-    .logo-block {
+
+      /* layout */
       display: flex;
-      align-items: flex-start;
-      gap: 18px;
+      justify-content: space-between;
+      align-items: flex-start; /* keep logo top aligned like design */
+      gap: 16px;
     }
-    .logo-img {
-      height: 90px;
-      width: auto;
-      max-width: 220px;
-    }
+
+    .logo-block { display:flex; align-items:flex-start; gap: 18px; }
+    .logo-img { height: 90px; width: auto; max-width: 220px; display:block; }
+
+    /* small top-right contact pill (keeps width/height close to image) */
     .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 184px;
+      height: 37px;
+      line-height: 1;
       background: #A3A582;
-      color: #fff;
-      padding: 10px 32px;
+      color: #F4EEE4;
       border: none;
       border-radius: 2px;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 16px;
+      font-family: 'General Sans', 'Montserrat', Arial, sans-serif;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      box-shadow: none;
-      letter-spacing: 0.5px;
+      z-index: 11;
+      padding: 0 12px;
     }
+
+    /* main content: center column so content lines up perfectly */
     .main-content {
       position: relative;
       z-index: 10;
-      text-align: center;
       max-width: 1100px;
-      color: white;
       margin: 0 auto;
-      padding-top: 160px;
+      padding-top: 160px;          /* keeps vertical rhythm from your design */
+      display: flex;
+      flex-direction: column;
+      align-items: center;        /* <-- key alignment fix */
+      text-align: center;         /* center text inside the column */
+      gap: 18px;                  /* consistent vertical gap between blocks */
     }
-    /* Add your custom styles for slide 02 content here */
+
+    /* kicker text (introducing..) */
+    .kicker {
+      font-family: 'General Sans', 'Montserrat', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 25.66px;
+      color: #FFFFFF;
+      opacity: 0.95;
+    }
+
+    /* investopia wordmark (kept as image for exact logo) */
+    .wordmark {
+      width: 900px;
+      max-width: 92%;
+      height: auto;
+      display:block;
+      margin: 0 auto;
+    }
+
+    /* headline area (kept centered inside the main column) */
+    .headline-wrap {
+      max-width: 726px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .headline {
+      font-family: 'Esperanza Headline', 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 41.17px;
+      line-height: 1.25;
+      color: #fff;
+      margin: 0;
+    }
+
+    /* meta short paragraph */
+    .meta {
+      max-width: 630px;
+      width: 100%;
+      font-family: 'General Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 19.86px;
+      line-height: 26px;
+      color: #A2A582;
+      margin: 0 auto;
+    }
+
+    /* "Here’s what's happening" */
+    .whats {
+      font-family: 'General Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 23.44px;
+      color: #FFFFFF;
+      margin-top: 8px;
+    }
+
+    /* event list (centered column) */
+    .events {
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      align-items:center;
+      max-width:700px;
+      width:100%;
+      margin: 0 auto;
+    }
+    .event-title {
+      font-family: 'General Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 26.37px;
+      color: #A2A582;
+      margin: 0;
+    }
+    .event-desc {
+      font-family: 'General Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 26.37px;
+      color: #F3EEE5;
+      margin: 0;
+    }
+
+    /* footer note */
+    .footer-note {
+      font-family: 'General Sans', Arial, sans-serif;
+      font-weight: 500;
+      font-size: 24.82px;
+      color: #F3EEE5;
+      margin-top: 6px;
+    }
+
+    /* small responsive tweaks only for alignment (no layout overhaul) */
+    @media (max-width: 900px) {
+      .header { padding: 24px; }
+      .logo-img { height: 70px; }
+      .contact-btn { width: 150px; height: 34px; letter-spacing: 2px; font-size: 14px; }
+      .kicker { font-size: 20px; }
+      .headline { font-size: 30px; }
+      .meta { font-size: 15px; }
+      .event-title, .event-desc { font-size: 20px; }
+      .footer-note { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
-  <div class="bg-left"></div>
-  <div class="bg-right"></div>
-  <div class="header">
+  <div class="bg-left" aria-hidden="true"></div>
+  <div class="bg-right" aria-hidden="true"></div>
+
+  <header class="header">
     <div class="logo-block">
-      <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="logo-img" />
+      <img src="./public/gaet-logo.png" class="logo-img" alt="GAET International School Logo" />
     </div>
-    <button class="contact-btn">CONTACT US</button>
-  </div>
-  <div class="main-content">
-    <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-size:25.66px;line-height:100%;margin-bottom:18px;opacity:0.9;text-align:center;">INTRODUCING THE FIRST EDITION OF</div>
-    <img src="./public/investopia-logo.png" alt="Investopia Banner" style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto 10px auto;" />
-    <div style="width:726px;height:78px;max-width:95vw;margin:60px auto 32px auto;display:flex;align-items:center;justify-content:center;opacity:1;box-sizing:border-box;">
-      <span style="font-family:'Esperanza Headline', 'Playfair Display', serif;font-weight:400;font-style:normal;font-size:41.17px;line-height:100%;letter-spacing:0%;text-align:center;vertical-align:middle;color:#fff;display:block;width:100%;">A Celebration of Ideas, Innovation &<br>Young Entrepreneurship</span>
-    </div>
-    <div style="width:630px;height:40px;max-width:95vw;margin:0 auto 32px auto;display:flex;align-items:center;justify-content:center;opacity:1;box-sizing:border-box;">
-      <span style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:19.86px;line-height:26px;letter-spacing:0%;text-align:center;vertical-align:middle;color:#A2A582;display:block;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">AN EVENT ORGANISED BY GAET INTERNATIONAL SCHOOL - ALDEIA WHERE STUDENT-LED IMAGINATION MEETS REAL-WORLD THINKING</span>
-    </div>
-  <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:23.44px;line-height:100%;letter-spacing:0%;vertical-align:middle;margin-bottom:24px;text-align:center;">Here’s what’s happening :</div>
-    <div style="display:flex;flex-direction:column;gap:18px;align-items:center;max-width:700px;margin:0 auto 40px auto;">
-      <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:26.37px;line-height:100%;letter-spacing:0%;vertical-align:middle;color:#A2A582;margin-bottom:2px;text-align:center;">MY DREAM BUSINESS CARNIVAL</div>
-      <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:26.37px;line-height:100%;letter-spacing:0%;vertical-align:middle;margin-bottom:8px;text-align:center;">Vibrant stalls by our youngest innovators</div>
-      <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:26.37px;line-height:100%;letter-spacing:0%;vertical-align:middle;color:#A2A582;margin-bottom:2px;text-align:center;">THE JOURNEY OF AN ENTREPRENEUR</div>
-      <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:26.37px;line-height:100%;letter-spacing:0%;vertical-align:middle;margin-bottom:8px;text-align:center;">A fun, thoughtful skit on how ideas take shape</div>
-      <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:26.37px;line-height:100%;letter-spacing:0%;vertical-align:middle;color:#A2A582;margin-bottom:2px;text-align:center;">THE INVESTOR DEN</div>
-      <div style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:26.37px;line-height:100%;letter-spacing:0%;vertical-align:middle;margin-bottom:8px;text-align:center;">A high energy pitch of business ideas by various schools<br>impressing a panel of real-world judges</div>
-    </div>
-    <div style="font-family:'General Sans', Arial, sans-serif;font-weight:500;font-style:normal;font-size:24.82px;line-height:100%;letter-spacing:0%;vertical-align:middle;margin-bottom:10px;text-align:center;">Open to all – family, friends, and curious minds!</div>
-  </div>
+
+    <!-- contact pill stays top-right and aligned with header padding -->
+    <button class="contact-btn" aria-label="Contact us">CONTACT US</button>
+  </header>
+
+  <main class="main-content" role="main">
+    <div class="kicker">INTRODUCING THE FIRST EDITION OF</div>
+
+    <img src="./public/investopia-logo.png" alt="Investopia wordmark" class="wordmark" />
+
+    <p class="meta">AN EVENT ORGANISED BY GAET INTERNATIONAL SCHOOL - ALDEIA WHERE STUDENT-LED IMAGINATION MEETS REAL-WORLD THINKING</p>
+
+    <div class="whats">Here’s what’s happening :</div>
+
+    <section class="events" aria-label="Events list">
+      <div>
+        <p class="event-title">MY DREAM BUSINESS CARNIVAL</p>
+        <p class="event-desc">Vibrant stalls by our youngest innovators</p>
+      </div>
+
+      <div>
+        <p class="event-title">THE JOURNEY OF AN ENTREPRENEUR</p>
+        <p class="event-desc">A fun, thoughtful skit on how ideas take shape</p>
+      </div>
+
+      <div>
+        <p class="event-title">THE INVESTOR DEN</p>
+        <p class="event-desc">A high energy pitch of business ideas by various schools<br>impressing a panel of real-world judges</p>
+      </div>
+    </section>
+
+    <div class="footer-note">Open to all – family, friends, and curious minds!</div>
+  </main>
 </body>
 </html>
