@@ -1,3 +1,121 @@
+/* Mobile responsive styles for Investopia banner */
+@media (max-width: 700px) {
+  html, body {
+    width: 100vw;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+  /* Removed duplicate .contact-btn for mobile, use main style below */
+  .contact-btn {
+    width: 140px;
+    height: 32px;
+    font-size: 13px;
+    padding: 6px 10px;
+    margin-top: 10px;
+    align-self: center;
+  }
+  body {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  .bg-left, .bg-right {
+    display: none;
+  }
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px 0 10px;
+    position: static;
+    width: 100vw;
+  }
+  .logo-img {
+    height: 60px;
+    max-width: 140px;
+  }
+  .contact-btn {
+    width: 140px;
+    height: 32px;
+    font-size: 13px;
+    padding: 6px 10px;
+    margin-top: 10px;
+    align-self: center;
+  }
+  .main-content, .main-heading, .subtitle {
+    max-width: 98vw !important;
+    width: 98vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: static !important;
+    padding: 0 2vw !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+  .main-content {
+    padding-top: 80px !important;
+  }
+  .main-heading {
+    font-size: 20px !important;
+    line-height: 28px !important;
+    height: auto !important;
+    margin: 24px 0 16px 0 !important;
+  }
+  .subtitle {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+  }
+    .register-btn {
+      /* Frame 8 from Figma */
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 27px 38px;
+      gap: 10px;
+      position: absolute;
+      width: 271px;
+      height: 72px;
+      left: calc(50% - 271px/2 - 0.4px);
+      top: 762px;
+      background: #F3EEE4;
+      color: #235153;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      text-align: center;
+      letter-spacing: 0.01em;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .register-btn:hover, .register-btn:focus {
+      background: #edeadf;
+      outline: none;
+    }
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    position: static;
+    font-size: 13px !important;
+  }
+  .footer-arrow {
+    display: none;
+  }
+  .main-content span, .main-content div, .main-content {
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+    word-break: break-word;
+  }
+}
 html, body {
   height: 100%;
   margin: 0;
@@ -43,10 +161,12 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   padding-left: 60px;
   padding-right: 40px;
   z-index: 10;
+  min-height: 60px;
+  overflow: visible;
 }
 .logo-block {
   display: flex;
@@ -59,41 +179,59 @@ body {
   max-width: 220px;
 }
 /* Exact-look contact button (184 × 37) */
-.contact-btn{
-  display: inline-block;
+.contact-btn {
+  display: inline-flex;             /* reliably center content */
+  align-items: center;
+  justify-content: center;
+
   width: 184px;
   height: 37px;
-
-  /* center text vertically */
-  line-height: 37px;
-  text-align: center;
+  padding: 0 12px;                  /* allow some horizontal breathing room */
 
   /* colors */
-  background: #A3A582;       /* olive panel */
-  color: #F4EEE4;            /* soft ivory text */
+  background: #A3A582;              /* olive panel */
+  color: #F4EEE4;                   /* soft ivory text */
 
-  /* typography — thin, very spaced uppercase like the image */
+  /* typography */
   font-family: "General Sans", "Montserrat", Arial, sans-serif;
-  font-weight: 300;         /* thin weight for that delicate look */
-  font-size: 16px;          /* matches optical size in image */
-  letter-spacing: 3px;      /* wide tracking to match the image */
+  font-weight: 300;                 /* thin look — fallback to 400 if 300 not available */
+  font-size: 16px;
+  letter-spacing: 3px;              /* wide tracking like the image */
   text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 
   /* box */
   border: none;
   border-radius: 2px;
   box-shadow: none;
-  padding: 0;               /* width/height are fixed; no extra vertical padding */
   cursor: pointer;
 
-  /* slight transition for hover */
-  transition: background .18s ease, color .18s ease;
+  /* transitions */
+  transition: background .18s ease, color .18s ease, transform .08s ease;
 }
 
-/* subtle hover (optional) — keep it soft */
-.contact-btn:hover{
-  background: #8f9570;
-  color: #fff;
+/* hover / active states */
+.contact-btn:hover { background: #8f9570; color: #fff; transform: translateY(-1px); }
+.contact-btn:active { transform: translateY(0); }
+
+/* keyboard focus (accessible and visible without changing visual layout) */
+.contact-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(163,165,130,0.18); /* subtle focus ring matching the panel color */
+  border-radius: 3px;
+}
+
+/* small-screen tweak so it doesn't overflow or look too wide */
+@media (max-width: 900px) {
+  .contact-btn {
+    width: 150px;
+    height: 34px;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
 }
 
 .subtitle {
