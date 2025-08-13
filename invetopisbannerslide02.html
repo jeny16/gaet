@@ -8,81 +8,101 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Playfair+Display:700&display=swap" rel="stylesheet">
 
   <style>
-    /* reset / base */
     html, body { height: 100%; margin: 0; padding: 0; }
     *, *::before, *::after { box-sizing: border-box; }
-
     body {
       min-height: 100vh;
       background: url('./public/bg-image.png') center center/cover no-repeat;
+      
       color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
       position: relative;
       overflow: hidden;
     }
-
-    /* decorative overlays (unchanged) */
-    .bg-left, .bg-right {
-      position: fixed; top: 0; bottom: 0; width: 50vw; z-index: 0; pointer-events: none;
-      background-repeat: no-repeat; background-size: contain; opacity: 0.22;
-    }
-    .bg-left { left: 0; background-image: url('./public/bg-design-1.png'); background-position: left center; }
-    .bg-right { right: 0; background-image: url('./public/bg-design-2.png'); background-position: right center; }
-
-    /* header */
     .header {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      padding: 40px 60px;
-      z-index: 10;
-
-      /* layout */
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 1920px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start; /* keep logo top aligned like design */
-      gap: 16px;
+      align-items: flex-start;
+      padding: 40px 60px 0 40px;
+      z-index: 10;
+      background: none;
+      box-shadow: none;
     }
-
-    .logo-block { display:flex; align-items:flex-start; gap: 18px; }
-    .logo-img { height: 90px; width: auto; max-width: 220px; display:block; }
-
-    /* small top-right contact pill (keeps width/height close to image) */
+    .logo-block {
+      display: flex;
+      align-items: flex-start;
+    }
+    .logo-img {
+      height: 90px;
+      width: auto;
+      max-width: 220px;
+      display: block;
+      margin-bottom: 0;
+      filter: none;
+    }
     .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 184px;
-      height: 37px;
-      line-height: 1;
       background: #A3A582;
       color: #F4EEE4;
       border: none;
+      padding: 10px 32px;
+      font-size: 15px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 500;
       border-radius: 2px;
-      font-size: 16px;
-      font-family: 'General Sans', 'Montserrat', Arial, sans-serif;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
       cursor: pointer;
-      z-index: 11;
-      padding: 0 12px;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s;
+      text-transform: uppercase;
+      box-shadow: none;
+      margin-top: 0;
+      line-height: 1.2;
+      display: inline-block;
     }
+    .contact-btn:hover {
+      background: #8b9a5b;
+      color: #fff;
+    }
+  /* No body padding for absolute header */
 
-    /* main content: center column so content lines up perfectly */
+/* Make background images touch page edges */
+.bg-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  height: 100vh;
+  background: url('./public/bg-design-1.png') left bottom / cover no-repeat;
+  opacity: 0.32;
+}
+.bg-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  background: url('./public/bg-design-2.png') right bottom / cover no-repeat;
+  opacity: 0.35;
+}
+
+
     .main-content {
       position: relative;
       z-index: 10;
       max-width: 1100px;
       margin: 0 auto;
-      padding-top: 160px;          /* keeps vertical rhythm from your design */
+      padding-top: 160px;
       display: flex;
       flex-direction: column;
-      align-items: center;        /* <-- key alignment fix */
-      text-align: center;         /* center text inside the column */
-      gap: 18px;                  /* consistent vertical gap between blocks */
+      align-items: center;
+      text-align: center;
+      gap: 18px;
     }
-
-    /* kicker text (introducing..) */
     .kicker {
       font-family: 'General Sans', 'Montserrat', Arial, sans-serif;
       font-weight: 400;
@@ -90,8 +110,6 @@
       color: #FFFFFF;
       opacity: 0.95;
     }
-
-    /* investopia wordmark (kept as image for exact logo) */
     .wordmark {
       width: 900px;
       max-width: 92%;
@@ -99,46 +117,26 @@
       display:block;
       margin: 0 auto;
     }
-
-    /* headline area (kept centered inside the main column) */
-    .headline-wrap {
-      max-width: 726px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .headline {
-      font-family: 'Esperanza Headline', 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: 41.17px;
-      line-height: 1.25;
-      color: #fff;
-      margin: 0;
-    }
-
-    /* meta short paragraph */
     .meta {
-      max-width: 630px;
+      max-width: 670px;
+      margin-top: 8px;
       width: 100%;
       font-family: 'General Sans', Arial, sans-serif;
       font-weight: 400;
       font-size: 19.86px;
       line-height: 26px;
       color: #A2A582;
-      margin: 0 auto;
+      /* margin: 0 auto; */
+      text-align: justify;
+      text-justify: inter-word;
     }
-
-    /* "Here’s what's happening" */
     .whats {
       font-family: 'General Sans', Arial, sans-serif;
       font-weight: 400;
       font-size: 23.44px;
       color: #FFFFFF;
-      margin-top: 8px;
+      margin-top: 25px;
     }
-
-    /* event list (centered column) */
     .events {
       display:flex;
       flex-direction:column;
@@ -153,7 +151,7 @@
       font-weight: 400;
       font-size: 26.37px;
       color: #A2A582;
-      margin: 0;
+      margin-bottom: 5px;
     }
     .event-desc {
       font-family: 'General Sans', Arial, sans-serif;
@@ -162,8 +160,6 @@
       color: #F3EEE5;
       margin: 0;
     }
-
-    /* footer note */
     .footer-note {
       font-family: 'General Sans', Arial, sans-serif;
       font-weight: 500;
@@ -171,14 +167,11 @@
       color: #F3EEE5;
       margin-top: 6px;
     }
-
-    /* small responsive tweaks only for alignment (no layout overhaul) */
     @media (max-width: 900px) {
       .header { padding: 24px; }
       .logo-img { height: 70px; }
       .contact-btn { width: 150px; height: 34px; letter-spacing: 2px; font-size: 14px; }
       .kicker { font-size: 20px; }
-      .headline { font-size: 30px; }
       .meta { font-size: 15px; }
       .event-title, .event-desc { font-size: 20px; }
       .footer-note { font-size: 18px; }
@@ -207,25 +200,27 @@
     <p class="meta">AN EVENT ORGANISED BY GAET INTERNATIONAL SCHOOL - ALDEIA WHERE STUDENT-LED IMAGINATION MEETS REAL-WORLD THINKING</p>
 
     <div class="whats">Here’s what’s happening :</div>
-
     <section class="events" aria-label="Events list">
       <div>
-        <p class="event-title">MY DREAM BUSINESS CARNIVAL</p>
+        <p class="event-title gold">MY DREAM BUSINESS CARNIVAL</p>
         <p class="event-desc">Vibrant stalls by our youngest innovators</p>
       </div>
-
       <div>
-        <p class="event-title">THE JOURNEY OF AN ENTREPRENEUR</p>
+        <p class="event-title gold">THE JOURNEY OF AN ENTREPRENEUR</p>
         <p class="event-desc">A fun, thoughtful skit on how ideas take shape</p>
       </div>
-
       <div>
-        <p class="event-title">THE INVESTOR DEN</p>
+        <p class="event-title gold">THE INVESTOR DEN</p>
         <p class="event-desc">A high energy pitch of business ideas by various schools<br>impressing a panel of real-world judges</p>
       </div>
     </section>
-
-    <div class="footer-note">Open to all – family, friends, and curious minds!</div>
+    <div class="footer-note bold-white">Open to all – family, friends, and curious minds!</div>
   </main>
-</body>
-</html>
+  <a href="invetopisbannerslide01.html" class="footer-arrow left-footer-arrow" aria-label="Previous" style="position:fixed;bottom:32px;left:32px;z-index:20;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="16" fill="#A3A582"/>
+      <path d="M19 10L13 16L19 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  </body>
+  </html>

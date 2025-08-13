@@ -66,36 +66,6 @@
     font-size: 15px !important;
     margin-bottom: 10px !important;
   }
-    .register-btn {
-      /* Frame 8 from Figma */
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 27px 38px;
-      gap: 10px;
-      position: absolute;
-      width: 271px;
-      height: 72px;
-      left: calc(50% - 271px/2 - 0.4px);
-      top: 762px;
-      background: #F3EEE4;
-      color: #235153;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 2rem;
-      font-weight: 400;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      text-align: center;
-      letter-spacing: 0.01em;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-    .register-btn:hover, .register-btn:focus {
-      background: #edeadf;
-      outline: none;
-    }
   .footer {
     flex-direction: column;
     align-items: center;
@@ -129,30 +99,76 @@ body {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-}
-/* Slide 02 background overlays */
-.bg-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 50vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  background: url('./public/bg-design-1.png') left center/contain no-repeat;
-  opacity: 0.32;
-}
+}/* ===== Improved background overlays (left + right) =====
+   - fixed to viewport
+   - non-interactive (pointer-events: none)
+   - scaled slightly larger so shapes overlap the center nicely
+   - responsive: hide on small screens for clarity
+*/
+.bg-left,
 .bg-right {
   position: fixed;
   top: 0;
-  right: 0;
-  width: 50vw;
   height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  background: url('./public/bg-design-2.png') right center/contain no-repeat;
-  opacity: 0.35;
+  width: 50vw;                 /* keep half the viewport each side */
+  z-index: 0;                  /* make sure your content has higher z-index (e.g. .stage { z-index: 1 }) */
+  pointer-events: none;        /* allow clicks to pass through */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 120% auto;  /* scale up a bit so shapes reach toward center */
+  opacity: 0.32;
+  transform: translateZ(0);    /* GPU hint to avoid flicker in some browsers */
 }
+
+/* left image sits left-center */
+.bg-left {
+  left: 0;
+  background-image: url('./public/bg-design-1.png');
+  background-position: left center;
+}
+
+/* right image sits right-center */
+.bg-right {
+  right: 0;
+  bottom: 0;
+  background-image: url('./public/bg-design-2.png');
+  background-position: right bottom;  /* anchor to bottom-right */
+  background-size: auto 100%;         /* scale to full height so it touches bottom */
+}
+
+
+/* On medium screens reduce scale so the shapes don't dominate */
+@media (max-width: 1400px) {
+  .bg-left,
+  .bg-right {
+    background-size: 100% auto;
+    opacity: 0.30;
+  }
+}
+
+/* On small screens hide overlays so hero content is readable */
+@media (max-width: 700px) {
+  .bg-left,
+  .bg-right {
+    display: none;
+  }
+
+  /* optional: use a simplified background for small screens */
+  body {
+    background-position: center top;
+    background-size: cover;
+  }
+}
+
+/* === Ensure your content sits above the overlays ===
+   Add this (or similar) to the element that wraps your visible content:
+   .stage, .main-content or header/main should have position:relative and z-index >= 1
+*/
+.stage, .main-content, header, main {
+  position: relative;
+  z-index: 1; /* or 10 — anything > 0 so it sits above .bg-left/.bg-right */
+}
+
 .header {
   position: absolute;
   top: 40px;
@@ -272,26 +288,26 @@ body {
 }
 .register-btn {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 27px 38px;
-  gap: 10px;
   position: absolute;
-  width: 271px;
-  height: 72px;
-  left: calc(50% - 271px/2 - 0.4px);
+  left: 50%;
   top: 762px;
+  transform: translateX(-50%);
+  width: 340px;
+  height: 90px;
+  padding: 0;
   background: #F3EEE4;
   border: none;
-  cursor: pointer;
-  font-family: 'General Sans', Arial, sans-serif;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(30,72,74,0.04);
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 32px;
   font-weight: 400;
   color: #1E484A;
-  border-radius: 0;
-  box-shadow: none;
   text-align: center;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
 }
 .register-btn:hover {
   background: #e94c1a;
