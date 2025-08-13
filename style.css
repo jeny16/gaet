@@ -1,0 +1,171 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  background: url('./public/bg-image.png') center center/cover no-repeat;
+  color: #fff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.bg-left {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: url('./public/bg-design-1.png') left center/cover no-repeat;
+  opacity: 0.22;
+}
+.bg-right {
+  position: fixed;
+  bottom: 0; right: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: url('./public/bg-design-2.png') right bottom/cover no-repeat;
+  opacity: 0.22;
+}
+.header {
+  position: absolute;
+  top: 88px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 60px;
+  padding-right: 40px;
+  z-index: 10;
+}
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.logo-img {
+  height: 90px;
+  width: auto;
+  max-width: 220px;
+}
+.contact-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 10px;
+  gap: 10px;
+  width: 184px;
+  height: 37px;
+  background: #A3A582;
+  color: #F4EEE4;
+  border: none;
+  border-radius: 2px;
+  font-size: 18px;
+  font-family: 'General Sans', Arial, sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: none;
+  opacity: 1;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+.contact-btn:hover {
+  background: #e94c1a;
+  color: #fff;
+}
+.subtitle {
+  position: absolute;
+  width: 480px;
+  height: 18px;
+  left: 777px;
+  top: 179.27px;
+  opacity: 1;
+  font-family: 'General Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25.66px;
+  line-height: 35px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  text-align: center;
+}
+.main-heading {
+  position: absolute;
+  width: 726px;
+  height: 78px;
+  left: 608px;
+  top: 571px;
+  font-family: 'Esperanza Headline', 'Playfair Display', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 41.17px;
+  line-height: 58px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  justify-content: center;
+}
+.register-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 27px 38px;
+  gap: 10px;
+  position: absolute;
+  width: 271px;
+  height: 72px;
+  left: calc(50% - 271px/2 - 0.4px);
+  top: 762px;
+  background: #F3EEE4;
+  border: none;
+  cursor: pointer;
+  font-family: 'General Sans', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1E484A;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+}
+.register-btn:hover {
+  background: #e94c1a;
+  color: #fff;
+}
+.footer {
+  position: absolute;
+  top: 951px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1526px;
+  height: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'General Sans', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 41px;
+  color: #A2A582;
+}
+@media (max-width: 900px) {
+  .header, .footer { padding-left: 20px; padding-right: 20px; }
+  .main-content { padding: 0 10px; }
+  .investopia-title { font-size: 2.2rem; }
+  .main-heading { font-size: 1.2rem; }
+}
+@media (max-width: 600px) {
+  .header, .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer { font-size: 0.95rem; }
+  .main-content { min-height: 60vh; }
+}

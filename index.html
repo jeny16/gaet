@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Investopia - GAET International School, Aldeia</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Playfair+Display:700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      background: url('./public/bg-image.png') center center/cover no-repeat;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      position: relative;
+  /* border removed */
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    /* Paper plane background shapes */
+    .bg-left {
+      position: fixed;
+      top: 0; left: 0; width: 50vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background: url('./public/bg-design-1.png') left center/contain no-repeat;
+      opacity: 0.22;
+    }
+    .bg-right {
+      position: fixed;
+      top: 0; right: 0; width: 50vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background: url('./public/bg-design-2.png') right center/contain no-repeat;
+      opacity: 0.22;
+    }
+    /* Header */
+    .header {
+          .bg-left {
+            position: fixed;
+            top: 0; left: 0; width: 50vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            background: url('./public/bg-design-1.png') left center/contain no-repeat;
+            opacity: 0.22;
+          }
+          .bg-right {
+            position: fixed;
+            top: 0; right: 0; width: 50vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            background: url('./public/bg-design-2.png') right center/contain no-repeat;
+            opacity: 0.22;
+          }
+      padding: 40px 60px 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .logo-img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .logo-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+    }
+    .contact-btn {
+      background: #A3A582;
+      color: #184848;
+      border: none;
+      padding: 8px 28px;
+      font-size: 1rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 500;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-top: 8px;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+      position: relative;
+      right: 0;
+    }
+    .contact-btn:hover {
+      background: #e94c1a;
+      color: #fff;
+    }
+    /* Main content */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .subtitle {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+      margin-top: 30px;
+      opacity: 0.85;
+    }
+    .investopia-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 10px;
+    }
+    .investopia-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin-right: 30px;
+      display: flex;
+      align-items: center;
+    }
+    .investopia-title .o {
+      display: inline-block;
+      width: 1.1em;
+      height: 1.1em;
+      border-radius: 50%;
+      background: #fff;
+      color: #184848;
+      position: relative;
+      margin: 0 2px;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .investopia-title .o svg {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0.7em; height: 0.7em;
+      fill: #184848;
+    }
+    .gaet-block {
+      border-left: 2px solid #fff;
+      padding-left: 18px;
+      text-align: left;
+      font-size: 1.1rem;
+      line-height: 1.2;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin-left: 10px;
+    }
+    .gaet-block .gaet-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 2px;
+    }
+    .gaet-block .gaet-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.8;
+      letter-spacing: 0.07em;
+    }
+    .investopia-desc {
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      margin-bottom: 30px;
+      margin-top: 0;
+      opacity: 0.8;
+    }
+    .main-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 40px 0 30px 0;
+      color: #fff;
+      line-height: 1.3;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    }
+    .register-btn {
+      background: #fff;
+      color: #184848;
+      border: none;
+      padding: 14px 38px;
+      font-size: 1.1rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 500;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .register-btn:hover {
+      background: #e94c1a;
+      color: #fff;
+    }
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 30px;
+      left: 0; right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 60px;
+      font-size: 1.05rem;
+      color: #bdb393;
+      opacity: 0.93;
+      z-index: 2;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    @media (max-width: 900px) {
+      .header, .footer { padding-left: 20px; padding-right: 20px; }
+      .main-content { padding: 0 10px; }
+      .investopia-title { font-size: 2.2rem; }
+      .main-heading { font-size: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      .header, .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .footer { font-size: 0.95rem; }
+      .main-content { min-height: 60vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+  <div class="header" style="position:absolute;top:40px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 60px;z-index:10;">
+    <div class="logo-block" style="display:flex;align-items:flex-start;gap:18px;">
+      <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="logo-img" style="height:90px;width:auto;max-width:220px;" />
+    </div>
+    <button class="contact-btn" style="background:#A3A582;color:#fff;padding:10px 32px;border:none;border-radius:2px;font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;box-shadow:none;letter-spacing:0.5px;">CONTACT US</button>
+  </div>
+  <div class="main-content" style="position:relative;z-index:10;text-align:center;max-width:1100px;color:white;margin:0 auto;padding-top:110px;">
+    <div class="subtitle" style="font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;font-size:25.66px;line-height:100%;letter-spacing:0%;vertical-align:middle;margin-bottom:18px;opacity:0.9;text-align:center;">INTRODUCING THE FIRST EDITION OF</div>
+    <img src="./public/investopia-logo.png" alt="Investopia Banner" style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto 18px auto;" />
+    <div class="investopia-desc" style="font-family:'General Sans', Arial, sans-serif;font-size:17px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:38px;opacity:0.8;text-align:center;">ENTREPRENEUR IN THE MAKING</div>
+    <div class="main-heading" style="font-family:'Esperanza Headline', 'Playfair Display', serif;font-weight:400;font-style:normal;font-size:41.5px;line-height:100%;letter-spacing:0%;text-align:center;vertical-align:middle;margin-bottom:48px;color:white;">A Celebration of Ideas, Innovation &<br>Young Entrepreneurship</div>
+    <button class="register-btn" style="background:#fff;color:#184848;padding:14px 38px;border:none;border-radius:2px;font-size:20px;font-weight:500;cursor:pointer;transition:all 0.2s;margin-bottom:60px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">Registration open</button>
+    <div class="footer" style="display:flex;justify-content:space-between;align-items:center;width:100%;max-width:1100px;background:transparent;font-size:30px;opacity:1;color:#A2A582;margin:0 auto;font-family:'General Sans', Arial, sans-serif;font-weight:400;font-style:normal;line-height:100%;letter-spacing:0%;text-align:center;vertical-align:middle;position:relative;bottom:auto;left:auto;right:auto;">
+      <div style="font-size:30px;line-height:100%;color:#A2A582;">August 21, 2025</div>
+      <div style="font-size:30px;line-height:27.22px;color:#A2A582;">From 9.00 am onwards</div>
+      <div style="font-size:30px;line-height:30.54px;color:#A2A582;">GAET International School, Aldeia</div>
+    </div>
+  </div>
+</body>
