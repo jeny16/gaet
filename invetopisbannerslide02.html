@@ -188,7 +188,9 @@
     </div>
 
     <!-- contact pill stays top-right and aligned with header padding -->
-    <button class="contact-btn" aria-label="Contact us">CONTACT US</button>
+    <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer">
+      <button class="contact-btn" aria-label="Contact us">CONTACT US</button>
+    </a>
   </header>
 
   <main class="main-content" role="main">
@@ -214,13 +216,19 @@
         <p class="event-desc">A high energy pitch of business ideas by various schools<br>impressing a panel of real-world judges</p>
       </div>
     </section>
-    <div class="footer-note bold-white">Open to all – family, friends, and curious minds!</div>
+  <div class="footer-note bold-white" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <span>Open to all – family, friends, and curious minds!</span>
+    <div style="display:flex;align-items:center;justify-content:center;margin-top:40px;gap:64px;">
+      <!-- Left navigation arrow (active) -->
+      <a href="invetopisbannerslide01.html" class="footer-arrow left-footer-arrow" aria-label="Previous" style="background:none;border:none;padding:0;display:inline-flex;align-items:center;">
+        <svg width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1);"><path d="M1.17188 7.50098L10.8271 17.1562L1.17188 26.8115" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+      </a>
+      <!-- Right navigation arrow (disabled) -->
+      <span class="footer-arrow right-footer-arrow" aria-label="Next" style="background:none;border:none;padding:0;display:inline-flex;align-items:center;opacity:0.3;cursor:not-allowed;">
+        <svg width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.17188 7.50098L10.8271 17.1562L1.17188 26.8115" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+      </span>
+    </div>
+  </div>
   </main>
-  <a href="invetopisbannerslide01.html" class="footer-arrow left-footer-arrow" aria-label="Previous" style="position:fixed;bottom:32px;left:32px;z-index:20;">
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="16" cy="16" r="16" fill="#A3A582"/>
-      <path d="M19 10L13 16L19 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </a>
   </body>
   </html>

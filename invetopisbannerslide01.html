@@ -2,42 +2,629 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Investopia - GAET International School, Aldeia</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Playfair+Display:700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <style>
+    /* Reset and base styles */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #1E484A;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Desktop styles (default) */
+    .main-desktop {
+      position: relative;
+      width: 100%;
+      max-width: 1920px;
+      height: 1080px;
+      margin: 0 auto;
+      background: #1E484A;
+      overflow: visible;
+    }
+
+    .main-mobile {
+      display: none;
+    }
+
+    /* Background overlays for desktop */
+    .bg-left,
+    .bg-right {
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      width: 50vw;
+      z-index: 0;
+      pointer-events: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 120% auto;
+      opacity: 0.32;
+      transform: translateZ(0);
+    }
+
+    .bg-left {
+      left: 0;
+      background-image: url('./public/bg-design-1.png');
+      background-position: left center;
+    }
+
+    .bg-right {
+      right: 0;
+      bottom: 0;
+      background-image: url('./public/bg-design-2.png');
+      background-position: right bottom;
+      background-size: auto 100%;
+    }
+
+    /* Header */
+    .header {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 60px;
+      padding-right: 40px;
+      z-index: 10;
+      min-height: 60px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .logo-img {
+      height: 90px;
+      width: auto;
+      max-width: 220px;
+    }
+
+    /* Contact button */
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 184px;
+      height: 37px;
+      padding: 0 12px;
+      background: #A3A582;
+      color: #F4EEE4;
+      font-family: "General Sans", "Montserrat", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .18s ease, color .18s ease, transform .08s ease;
+    }
+
+    .contact-btn:hover {
+      background: #8f9570;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .contact-btn:active {
+      transform: translateY(0);
+    }
+
+    .contact-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(163,165,130,0.18);
+      border-radius: 3px;
+    }
+
+    /* Content elements */
+    .subtitle {
+      position: absolute;
+      width: 480px;
+      height: 18px;
+      left: 777px;
+      top: 179.27px;
+      font-family: 'General Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 25.66px;
+      line-height: 35px;
+      display: flex;
+      align-items: center;
+      color: #FFFFFF;
+      text-align: center;
+    }
+
+    .main-heading {
+      position: absolute;
+      width: 726px;
+      height: 78px;
+      left: 608px;
+      top: 571px;
+      font-family: 'Esperanza Headline', 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 41.17px;
+      line-height: 58px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      justify-content: center;
+    }
+
+    .register-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      top: 762px;
+      transform: translateX(-50%);
+      width: 340px;
+      height: 90px;
+      padding: 0;
+      background: #F3EEE4;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 2px 8px rgba(30,72,74,0.04);
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: #1E484A;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .register-btn:hover {
+      background: #e94c1a;
+      color: #fff;
+    }
+
+    .footer {
+      position: absolute;
+      top: 951px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1526px;
+      height: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'General Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 41px;
+      color: #A2A582;
+    }
+
+    .footer-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 16px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .footer-arrow svg circle {
+      transition: fill 0.2s;
+    }
+
+    .footer-arrow:hover svg circle {
+      fill: #1E484A;
+    }
+
+    .left-footer-arrow {
+      margin-left: 0;
+    }
+
+    .right-footer-arrow {
+      margin-right: 0;
+    }
+
+    /* Tablet breakpoint */
+    @media (max-width: 1400px) {
+      .bg-left,
+      .bg-right {
+        background-size: 100% auto;
+        opacity: 0.30;
+      }
+      
+      .main-desktop {
+        max-width: 100%;
+        height: auto;
+        min-height: 100vh;
+      }
+      
+      .subtitle {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 480px;
+      }
+      
+      .main-heading {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 726px;
+      }
+      
+      .footer {
+        width: 90%;
+        max-width: 1200px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .header {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      
+      .logo-img {
+        height: 70px;
+      }
+      
+      .contact-btn {
+        width: 150px;
+        height: 34px;
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+      
+      .subtitle {
+        font-size: 22px;
+        line-height: 30px;
+      }
+      
+      .main-heading {
+        font-size: 36px;
+        line-height: 50px;
+      }
+      
+      .register-btn {
+        width: 300px;
+        height: 80px;
+        font-size: 28px;
+      }
+      
+      .footer {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    /* Mobile breakpoint - hide desktop, show mobile */
+    @media (max-width: 768px) {
+      body {
+        background: #1E4749 !important;
+        overflow-x: hidden;
+      }
+      
+      .main-desktop {
+        display: none;
+      }
+      
+      .main-mobile {
+        display: block;
+      }
+    }
+
+    /* Mobile-specific styles */
+    .mobile-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 0 0 16px 0;
+          background: #1E4749;
+          min-height: 100vh;
+          /* display: flex; */
+          flex-direction: column;
+          align-items: center;
+        }
+
+    .mobile-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 16px 0 16px;
+    }
+
+    .mobile-logo {
+      height: 32px;
+      width: auto;
+    }
+
+    .mobile-contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 79px;
+      height: 15.89px;
+      background: #A3A582;
+      border-radius: 2px;
+      padding: 0.86px 4.29px;
+      gap: 4.29px;
+      text-decoration: none;
+    }
+
+    .mobile-contact-text {
+      font-family: 'General Sans', sans-serif;
+      font-size: 7.7px;
+      line-height: 10px;
+      color: #F4EEE4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mobile-investopia-logo {
+      width: 220px;
+      margin: 32px 0 0 0;
+    }
+
+    .mobile-main-heading {
+      width: 90%;
+      max-width: 320px;
+      font-family: 'Esperanza Headline', serif;
+      font-size: 17px;
+      color: #F3EDE4;
+      font-weight: 400;
+      line-height: 22px;
+      text-align: center;
+      margin: 24px 0 0 0;
+    }
+
+    .mobile-events {
+      width: 90%;
+      max-width: 340px;
+      margin: 24px 0 0 0;
+    }
+
+    .mobile-event {
+      margin-bottom: 14px;
+    }
+
+    .mobile-event:last-child {
+      margin-bottom: 0;
+    }
+
+    .mobile-event-title {
+      font-family: 'General Sans', sans-serif;
+      font-size: 8.5px;
+      color: #A2A481;
+      font-weight: 400;
+      margin: 0 0 2px 0;
+      text-align: center;
+    }
+
+    .mobile-event-desc {
+      font-family: 'General Sans', sans-serif;
+      font-size: 8.5px;
+      color: #F3EDE4;
+      font-weight: 400;
+      margin: 0 0 8px 0;
+      text-align: center;
+    }
+
+    .mobile-register-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 24px 0 0 0;
+    }
+
+    .mobile-register-btn {
+      background: #F3EEE4;
+      color: #1E484A;
+      font-family: 'General Sans', sans-serif;
+      font-size: 8.5px;
+      font-weight: 400;
+      border: none;
+      border-radius: 2px;
+      padding: 11px 24px;
+      min-width: 120px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      cursor: pointer;
+    }
+
+    .mobile-date-venue {
+      width: 90%;
+      max-width: 240px;
+      font-family: 'General Sans', sans-serif;
+      font-size: 10.4px;
+      color: #A2A481;
+      font-weight: 400;
+      line-height: 13px;
+      text-align: center;
+      margin: 24px 0 0 0;
+    }
+
+    .mobile-footer-note {
+  width: 90%;
+  max-width: 240px;
+  font-family: 'General Sans', sans-serif;
+  font-size: 10px;
+  color: #F3EDE4;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 4px;
+  margin: 24px 0 0 0;
+    }
+
+    .mobile-bg-top {
+      width: 120px;
+      height: auto;
+      align-self: flex-start;
+      opacity: 0.38;
+      margin-top: 0;
+    }
+
+    .mobile-bg-bottom {
+      width: 180px;
+      height: auto;
+      align-self: flex-end;
+      opacity: 0.38;
+      margin: 24px 0 0 0;
+    }
+
+    /* Small mobile devices */
+    @media (max-width: 480px) {
+      .mobile-container {
+        max-width: 100%;
+        padding: 0 8px 16px 8px;
+      }
+      
+      .mobile-header {
+        padding: 20px 12px 0 12px;
+      }
+      
+      .mobile-investopia-logo {
+        width: 200px;
+      }
+      
+      .mobile-main-heading {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    /* Very small devices */
+    @media (max-width: 360px) {
+      .mobile-investopia-logo {
+        width: 180px;
+      }
+      
+      .mobile-main-heading {
+        font-size: 15px;
+        line-height: 19px;
+      }
+      
+      .mobile-bg-top {
+        width: 100px;
+      }
+      
+      .mobile-bg-bottom {
+        width: 150px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div style="position:relative;width:1920px;height:1080px;margin:0 auto;background:#1E484A;overflow:visible;">
+  <!-- Desktop Version -->
+  <div class="main-desktop">
     <div class="bg-left"></div>
     <div class="bg-right"></div>
+    
     <div class="header">
       <div class="logo-block">
         <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="logo-img" />
       </div>
-  <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer"><button class="contact-btn">CONTACT US</button></a>
+      <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer">
+        <button class="contact-btn">CONTACT US</button>
+      </a>
     </div>
+    
     <div class="subtitle">INTRODUCING THE FIRST EDITION OF</div>
+    
     <img src="./public/investopia-logo.png" alt="Investopia Banner" style="position:absolute;top:230px;left:50%;transform:translateX(-50%);width:700px;max-width:100vw;height:auto;display:block;margin:0;" />
+    
     <div class="main-heading">A Celebration of Ideas, Innovation &<br>Young Entrepreneurship</div>
+    
     <button class="register-btn">Registration open</button>
+    
     <div class="footer">
       <a href="#" class="footer-arrow left-footer-arrow" aria-label="Previous">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="16" fill="#A3A582"/>
           <path d="M19 10L13 16L19 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
       <div style="width:207px;text-align:center;white-space:nowrap;">August 21, 2025</div>
       <div style="width:306px;text-align:center;white-space:nowrap;">From 9.00 am onwards</div>
       <div style="width:467px;text-align:center;white-space:nowrap;">GAET International School, Aldeia</div>
-  <a href="invetopisbannerslide02.html" class="footer-arrow right-footer-arrow" aria-label="Next">
+      <a href="invetopisbannerslide02.html" class="footer-arrow right-footer-arrow" aria-label="Next">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="16" fill="#A3A582"/>
           <path d="M13 10L19 16L13 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
     </div>
-    <!-- Slider nav and background vectors would be absolutely positioned here if needed -->
+  </div>
+
+  <!-- Mobile Version -->
+  <div class="main-mobile">
+    <div class="mobile-container" style="position:relative;overflow:hidden;">
+      <!-- Top BG overlay (absolute, full width, top) -->
+      <img src="./public/bg-design-1.png" class="mobile-bg-top" alt="bg-design-1" style="position:absolute;top:0;left:0;width:100%;height:auto;z-index:0;" />
+      <!-- Bottom BG overlay (absolute, full width, bottom) -->
+      <img src="./public/bg-design-2.png" class="mobile-bg-bottom" alt="bg-design-2" style="position:absolute;bottom:0;left:0;width:100%;height:auto;z-index:0;" />
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
+        <!-- Header Row -->
+        <div class="mobile-header">
+          <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="mobile-logo" />
+          <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer" class="mobile-contact-btn">
+            <span class="mobile-contact-text">Contact Us</span>
+          </a>
+        </div>
+        <!-- Main Investopia Logo -->
+        <img src="./public/investopia-logo.png" alt="Investopia Banner" class="mobile-investopia-logo" />
+        <!-- Main Heading -->
+        <div class="mobile-main-heading">
+          A Celebration of Ideas, Innovation &<br>Young Entrepreneurship
+        </div>
+        <!-- Events Section -->
+        <section class="mobile-events" aria-label="Events list">
+          <div class="mobile-event">
+            <p class="mobile-event-title">MY DREAM BUSINESS CARNIVAL</p>
+            <p class="mobile-event-desc">Vibrant stalls by our youngest innovators</p>
+          </div>
+          <div class="mobile-event">
+            <p class="mobile-event-title">THE JOURNEY OF AN ENTREPRENEUR</p>
+            <p class="mobile-event-desc">A fun, thoughtful skit on how ideas take shape</p>
+          </div>
+          <div class="mobile-event">
+            <p class="mobile-event-title">THE INVESTOR DEN</p>
+            <p class="mobile-event-desc">A high energy pitch of business ideas by various schools<br>impressing a panel of real-world judges</p>
+          </div>
+        </section>
+        <!-- Registration Button -->
+        <div class="mobile-register-container">
+          <button class="mobile-register-btn">Registration open</button>
+        </div>
+        <!-- Date and Venue -->
+        <div class="mobile-date-venue">
+          August 21, 2025<br>from 9.00 am onwards<br>GAET International School, Aldeia
+        </div>
+        <!-- Footer Note -->
+        <div class="mobile-footer-note">
+          Open to all – family, friends, and curious minds!
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
