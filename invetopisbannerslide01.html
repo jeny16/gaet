@@ -25,7 +25,7 @@
       color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
       position: relative;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     /* Desktop styles (default) */
@@ -145,7 +145,7 @@
       position: absolute;
       width: 480px;
       height: 18px;
-      left: 777px;
+      left: 735px;
       top: 179.27px;
       font-family: 'General Sans', Arial, sans-serif;
       font-weight: 400;
@@ -199,7 +199,7 @@
     }
 
     .register-btn:hover {
-      background: #e94c1a;
+      background: #A3A582;
       color: #fff;
     }
 
@@ -324,11 +324,9 @@
         background: #1E4749 !important;
         overflow-x: hidden;
       }
-      
       .main-desktop {
         display: none;
       }
-      
       .main-mobile {
         display: block;
       }
@@ -336,15 +334,14 @@
 
     /* Mobile-specific styles */
     .mobile-container {
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 0 0 16px 0;
-          background: #1E4749;
-          min-height: 100vh;
-          /* display: flex; */
-          flex-direction: column;
-          align-items: center;
-        }
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 0 16px 0;
+      background: #1E4749;
+      min-height: 70vh;
+      flex-direction: column;
+      align-items: center;
+    }
 
     .mobile-header {
       width: 100%;
@@ -478,7 +475,7 @@
     }
 
     .mobile-bg-top {
-      width: 120px;
+      width: 80px;
       height: auto;
       align-self: flex-start;
       opacity: 0.38;
@@ -486,7 +483,7 @@
     }
 
     .mobile-bg-bottom {
-      width: 180px;
+      width: 120px;
       height: auto;
       align-self: flex-end;
       opacity: 0.38;
@@ -555,76 +552,87 @@
     <img src="./public/investopia-logo.png" alt="Investopia Banner" style="position:absolute;top:230px;left:50%;transform:translateX(-50%);width:700px;max-width:100vw;height:auto;display:block;margin:0;" />
     
     <div class="main-heading">A Celebration of Ideas, Innovation &<br>Young Entrepreneurship</div>
+    <!-- Navigation Arrows: absolutely positioned left and right below heading -->
+  <a href="#" class="footer-arrow left-footer-arrow" aria-label="Previous" style="position:absolute;top:980px;left:40px;z-index:20;background:none;border:none;padding:0;display:inline-flex;align-items:center;">
+      <svg width="56" height="56" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 10L13 16L19 22" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  <a href="invetopisbannerslide02.html" class="footer-arrow right-footer-arrow" aria-label="Next" style="position:absolute;top:980px;right:40px;z-index:20;background:none;border:none;padding:0;display:inline-flex;align-items:center;">
+      <svg width="56" height="56" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 10L19 16L13 22" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
     
     <button class="register-btn">Registration open</button>
     
     <div class="footer">
-      <a href="#" class="footer-arrow left-footer-arrow" aria-label="Previous">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 10L13 16L19 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
       <div style="width:207px;text-align:center;white-space:nowrap;">August 21, 2025</div>
       <div style="width:306px;text-align:center;white-space:nowrap;">From 9.00 am onwards</div>
       <div style="width:467px;text-align:center;white-space:nowrap;">GAET International School, Aldeia</div>
-      <a href="invetopisbannerslide02.html" class="footer-arrow right-footer-arrow" aria-label="Next">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13 10L19 16L13 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
     </div>
   </div>
 
-  <!-- Mobile Version -->
+
+  <!-- Mobile Version Polished Flyer -->
   <div class="main-mobile">
-    <div class="mobile-container" style="position:relative;overflow:hidden;">
-      <!-- Top BG overlay (absolute, full width, top) -->
+    <div style="background:#1E4749;position:relative;overflow:hidden;width:100%;max-width:480px;margin:0 auto;box-sizing:border-box;">
+      <!-- Top origami/star bg -->
       <img src="./public/bg-design-1.png" class="mobile-bg-top" alt="bg-design-1" style="position:absolute;top:0;left:0;width:100%;height:auto;z-index:0;" />
-      <!-- Bottom BG overlay (absolute, full width, bottom) -->
       <img src="./public/bg-design-2.png" class="mobile-bg-bottom" alt="bg-design-2" style="position:absolute;bottom:0;left:0;width:100%;height:auto;z-index:0;" />
-      <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
-        <!-- Header Row -->
-        <div class="mobile-header">
-          <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="mobile-logo" />
-          <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer" class="mobile-contact-btn">
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;width:100%;padding:0 0 0 0;">
+        <!-- Header: logo left, contact right -->
+        <div style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;padding:24px 16px 0 16px;">
+          <img src="./public/gaet-logo.png" alt="GAET International School Logo" class="mobile-logo" style="height:32px;width:auto;" />
+          <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer" class="mobile-contact-btn" style="margin-top:4px;">
             <span class="mobile-contact-text">Contact Us</span>
           </a>
         </div>
-        <!-- Main Investopia Logo -->
-        <img src="./public/investopia-logo.png" alt="Investopia Banner" class="mobile-investopia-logo" />
-        <!-- Main Heading -->
-        <div class="mobile-main-heading">
+        <!-- Main highlight: Investopia logo and subtitle -->
+        <div style="width:100%;margin-top:24px;text-align:center;">
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;color:#A2A481;letter-spacing:1px;font-weight:500;text-transform:uppercase;margin-bottom:8px;">INTRODUCING THE FIRST EDITION OF</div>
+          <img src="./public/investopia-logo.png" alt="Investopia Banner" class="mobile-investopia-logo" style="margin:0 auto 12px auto;display:block;max-width:220px;width:80vw;" />
+        </div>
+        <!-- Event org + subheading -->
+        <div style="font-family:'Montserrat',sans-serif;font-size:9px;color:#A2A481;font-weight:400;margin:18px 0 0 0;text-align:center;line-height:1.4;">AN EVENT ORGANISED BY GAET INTERNATIONAL SCHOOL – ALDEIA<br>WHERE STUDENT-LED IMAGINATION MEETS REAL-WORLD THINKING</div>
+        <div class="mobile-main-heading" style="font-family:'Playfair Display',serif;font-size:15px;line-height:22px;color:#F3EDE4;font-weight:400;text-align:center;margin:18px 0 0 0;max-width:320px;">
           A Celebration of Ideas, Innovation &<br>Young Entrepreneurship
         </div>
-        <!-- Events Section -->
-        <section class="mobile-events" aria-label="Events list">
+        <!-- Section Title -->
+        <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#F3EDE4;margin:28px 0 8px 0;text-align:center;">Here’s what’s happening:</div>
+        <!-- Events List -->
+        <div class="mobile-events" style="margin:0 0 24px 0;">
           <div class="mobile-event">
-            <p class="mobile-event-title">MY DREAM BUSINESS CARNIVAL</p>
-            <p class="mobile-event-desc">Vibrant stalls by our youngest innovators</p>
+            <div class="mobile-event-title" style="font-weight:700;letter-spacing:0.5px;">MY DREAM BUSINESS CARNIVAL</div>
+            <div class="mobile-event-desc">Vibrant stalls by our youngest innovators</div>
           </div>
           <div class="mobile-event">
-            <p class="mobile-event-title">THE JOURNEY OF AN ENTREPRENEUR</p>
-            <p class="mobile-event-desc">A fun, thoughtful skit on how ideas take shape</p>
+            <div class="mobile-event-title" style="font-weight:700;letter-spacing:0.5px;">THE JOURNEY OF AN ENTREPRENEUR</div>
+            <div class="mobile-event-desc">A fun, thoughtful skit on how ideas take shape</div>
           </div>
           <div class="mobile-event">
-            <p class="mobile-event-title">THE INVESTOR DEN</p>
-            <p class="mobile-event-desc">A high energy pitch of business ideas by various schools<br>impressing a panel of real-world judges</p>
+            <div class="mobile-event-title" style="font-weight:700;letter-spacing:0.5px;">THE INVESTOR DEN</div>
+            <div class="mobile-event-desc">A high energy pitch of business ideas by various schools<br>impressing a panel of real-world judges</div>
           </div>
-        </section>
-        <!-- Registration Button -->
-        <div class="mobile-register-container">
-          <button class="mobile-register-btn">Registration open</button>
         </div>
-        <!-- Date and Venue -->
-        <div class="mobile-date-venue">
-          August 21, 2025<br>from 9.00 am onwards<br>GAET International School, Aldeia
+        <!-- Registration Button (moved here) -->
+        <div style="width:100%;display:flex;justify-content:center;margin:24px 0 24px 0;">
+          <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+            <button class="mobile-register-btn">Registration open</button>
+          </a>
         </div>
-        <!-- Footer Note -->
-        <div class="mobile-footer-note">
+        <!-- Date & Venue -->
+        <div class="mobile-date-venue" style="font-size:10px;line-height:14px;color:#A2A481;font-weight:400;margin:0 0 12px 0;">
+          August 21, 2025, from 9:00 am onwards<br>GAET International School, Aldeia
+        </div>
+        <!-- Footer -->
+        <div class="mobile-footer-note" style="font-size:10px;line-height:14px;color:#F3EDE4;font-weight:600;margin:0 0 32px 0;text-align:center;background:#1E4749;">
           Open to all – family, friends, and curious minds!
         </div>
       </div>
     </div>
+  <!-- End colored flyer, start white background -->
+  <div style="width:100%;min-height:40vh;background:#fff;"></div>
   </div>
 </body>
 </html>

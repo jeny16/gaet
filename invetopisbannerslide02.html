@@ -123,12 +123,14 @@
       width: 100%;
       font-family: 'General Sans', Arial, sans-serif;
       font-weight: 400;
+      font-style: normal;
       font-size: 19.86px;
       line-height: 26px;
+      letter-spacing: 0;
       color: #A2A582;
-      /* margin: 0 auto; */
-      text-align: justify;
-      text-justify: inter-word;
+      text-align: center;
+      vertical-align: middle;
+      /* leading-trim: cap-height; */
     }
     .whats {
       font-family: 'General Sans', Arial, sans-serif;
@@ -148,7 +150,7 @@
     }
     .event-title {
       font-family: 'General Sans', Arial, sans-serif;
-      font-weight: 400;
+      /* font-weight: 100; */
       font-size: 26.37px;
       color: #A2A582;
       margin-bottom: 5px;
@@ -188,8 +190,8 @@
     </div>
 
     <!-- contact pill stays top-right and aligned with header padding -->
-    <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer">
-      <button class="contact-btn" aria-label="Contact us">CONTACT US</button>
+    <a href="https://forms.gle/q29TEaEk3zrBLNbS9" target="_blank" rel="noopener noreferrer" class="contact-btn" style="display:inline-flex;align-items:center;justify-content:center;width:184px;height:37px;padding:0 12px;background:#A3A582;color:#F4EEE4;font-family:'General Sans','Montserrat',Arial,sans-serif;font-weight:300;font-size:16px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;text-align:center;border:none;border-radius:2px;cursor:pointer;transition:background .18s ease,color .18s ease,transform .08s ease;">
+      CONTACT US
     </a>
   </header>
 
@@ -218,16 +220,20 @@
     </section>
   <div class="footer-note bold-white" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
     <span>Open to all – family, friends, and curious minds!</span>
-    <div style="display:flex;align-items:center;justify-content:center;margin-top:40px;gap:64px;">
-      <!-- Left navigation arrow (active) -->
-      <a href="invetopisbannerslide01.html" class="footer-arrow left-footer-arrow" aria-label="Previous" style="background:none;border:none;padding:0;display:inline-flex;align-items:center;">
-        <svg width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1);"><path d="M1.17188 7.50098L10.8271 17.1562L1.17188 26.8115" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
-      </a>
-      <!-- Right navigation arrow (disabled) -->
-      <span class="footer-arrow right-footer-arrow" aria-label="Next" style="background:none;border:none;padding:0;display:inline-flex;align-items:center;opacity:0.3;cursor:not-allowed;">
-        <svg width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.17188 7.50098L10.8271 17.1562L1.17188 26.8115" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
-      </span>
-    </div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;margin-top:40px;gap:1800px;">
+    <!-- Left navigation arrow (active, links to first page) -->
+    <a href="invetopisbannerslide01.html" class="footer-arrow left-footer-arrow" aria-label="Previous" style="background:none;border:none;padding:0;display:inline-flex;align-items:center;">
+      <svg width="56" height="56" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 10L13 16L19 22" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <!-- Right navigation arrow (disabled) -->
+    <span class="footer-arrow right-footer-arrow" aria-label="Next" style="background:none;border:none;padding:0;display:inline-flex;align-items:center;opacity:0.3;cursor:not-allowed;">
+      <svg width="56" height="56" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 10L19 16L13 22" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
   </div>
   </main>
   </body>
